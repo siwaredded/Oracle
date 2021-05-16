@@ -175,7 +175,7 @@ CREATE USER tester2 IDENTIFIED BY tester2;
 CREATE USER devsecops1 IDENTIFIED BY devsecops1;
 CREATE USER devsecops2 IDENTIFIED BY devsecops2;
 
----
+
 ```
   --->  **Une fois qu'un utilisateur est créé, le DBA peut octroyer des privilèges de système spécifiques à cet utilisateur.**
  
@@ -190,7 +190,7 @@ CREATE USER devsecops2 IDENTIFIED BY devsecops2;
 ```
 GRANT CREATE PROCEDURE, CREATE VIEW, CREATE SEQUENCE, CREATE ANY TABLE, SELECT ANY TABLE, ALTER ANY TABLE, DROP ANY TABLE, CREATE SESSION TO dev1;
 
----
+
 ```
 
 ¤   **Une fois qu'un utilisateur est créé, le DBA peut octroyer des privilèges de système spécifiques à cet utilisateur.**
@@ -200,7 +200,7 @@ GRANT CREATE PROCEDURE, CREATE VIEW, CREATE SEQUENCE, CREATE ANY TABLE, SELECT A
 ```
 REVOKE CREATE PROCEDURE, CREATE VIEW, CREATE SEQUENCE, CREATE ANY TABLE, SELECT ANY TABLE, ALTER ANY TABLE, DROP ANY TABLE, CREATE SESSION FROM dev1;
 
----
+
 ```
 
  
@@ -225,20 +225,22 @@ REVOKE CREATE PROCEDURE, CREATE VIEW, CREATE SEQUENCE, CREATE ANY TABLE, SELECT 
 CREATE ROLE DevTeam;
 GRANT CREATE PROCEDURE, CREATE VIEW, CREATE SEQUENCE, CREATE ANY TABLE, SELECT ANY TABLE, ALTER ANY TABLE, DROP ANY TABLE, CREATE SESSION TO DevTeam;
 
----
+ ```
+  ```
 
 CREATE ROLE TestTeam;
 GRANT CONNECT, CREATE SESSION, SELECT ANY TABLE TO TestTeam;
 
----
+ ```
+  ```
 
 CREATE ROLE DevSecOpsTeam;
 GRANT ALL PRIVILEGES TO DevSecOpsTeam WITH ADMIN OPTION;
 
----
+
 ```
 
----
+
 
 
 
@@ -248,15 +250,15 @@ GRANT ALL PRIVILEGES TO DevSecOpsTeam WITH ADMIN OPTION;
 
 GRANT DevTeam to dev1, dev2;
 
----
-
+ ```
+ ```
 GRANT TestTeam to tester1, tester2;
 
----
-
+ ```
+ ```
 GRANT DevSecOpsTeam to devsecops1, devsecops2;
+ ```
 
----
 ```
 
    - **Limiter l'accès pour les testeurs de sorte qu'ils n'accèdent qu'à la table des employés "EMP":** 
@@ -264,12 +266,12 @@ GRANT DevSecOpsTeam to devsecops1, devsecops2;
 
 REVOKE SELECT ANY TABLE FROM TestTeam;REVOKE SELECT ANY TABLE FROM TestTeam;
 
----
 
 
+ ```
 GRANT SELECT ON emp TO TestTeam;
 
----
+
 ```
  
  
@@ -279,7 +281,7 @@ GRANT SELECT ON emp TO TestTeam;
 ```
 GRANT SELECT ON emp TO PUBLIC;
 
----
+
 ```
 
 **Retirer les privilèges attribuées aux admins, ainsi que les utilisateurs qui ont reçu leurs privilèges sur la table EMP par un membre de l'équipe devsecops:**
@@ -288,7 +290,7 @@ GRANT SELECT ON emp TO PUBLIC;
  
 REVOKE ALL PRIVILEGES ON emp FROM DevSecOpsTeam;
 
----
+
 ```
 
 
@@ -317,7 +319,6 @@ PASSWORD_LIFE_TIME 60
 PASSWORD_REUSE_TIME 10;
 
 
----
 ```
 
 
@@ -347,8 +348,7 @@ PASSWORD_LIFE_TIME 60
 PASSWORD_REUSE_TIME 10;
 
 ```
- 
----
+
 
 
 **Créer un profile de ressources dédié à l'équipe devsecops avec les limitations suivantes:**
@@ -374,7 +374,6 @@ PASSWORD_LIFE_TIME 60
 PASSWORD_REUSE_TIME 10
 
 
----
 ```
 
   - **Attribuer à l'utilisateur "dev1", le profile qui lui correspond:** 
@@ -382,6 +381,5 @@ PASSWORD_REUSE_TIME 10
 ALTER USER dev1 PROFILE dev;
 
 
----
 ```
 
