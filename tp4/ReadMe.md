@@ -167,7 +167,7 @@ ________________________________________________________________________________
      C) Equipe DevSecOps :      
       * [ username: devsecops1, password: devsecops1 ]
       * [ username: devsecops2, password: devsecops2 ]
-  
+ ``` 
 CREATE USER dev1 IDENTIFIED BY dev1;
 CREATE USER dev2 IDENTIFIED BY dev2;
 CREATE USER tester1 IDENTIFIED BY tester1;
